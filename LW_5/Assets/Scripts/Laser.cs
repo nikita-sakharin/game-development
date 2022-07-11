@@ -1,8 +1,6 @@
 using UnityEngine;
 
 public class Laser : MonoBehaviour {
-    private const float LaserDelta = 34, Velocity = 2000;
-
     [SerializeField]
     private GameObject explosion;
     private CobraInterceptor cobra;
@@ -12,9 +10,9 @@ public class Laser : MonoBehaviour {
     }
 
     private void Start() {
-        transform.rotation = new Quaternion(1 / Mathf.Sqrt(2), 0, 0,
-            1 / Mathf.Sqrt(2));
-        transform.Rotate(new Vector3 (0, Mathf.Rad2Deg * cobra.Angle));
+        const float LaserDelta = 34, SQRT1_2 = 7.0710678E-1F, Velocity = 2000;
+        transform.rotation = new Quaternion(SQRT1_2, 0, 0, SQRT1_2);
+        transform.Rotate(new Vector3(0, -Mathf.Rad2Deg * cobra.Angle));
         Vector3 normal = new Vector3(-cobra.transform.position.y,
             cobra.transform.position.x).normalized;
         GetComponent<Rigidbody>().velocity = normal * Velocity;

@@ -39,7 +39,7 @@ public class CobraInterceptor : MonoBehaviour {
 
     private void FixedUpdate() {
         transform.rotation = startRotation;
-        transform.Rotate(new Vector3 (0, -Mathf.Rad2Deg * angle));
+        transform.Rotate(new Vector3(0, -Mathf.Rad2Deg * angle));
 
         Vector3 position = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle)) *
             (Scene.R + deltaR);
@@ -64,8 +64,8 @@ public class CobraInterceptor : MonoBehaviour {
         Destroy(Instantiate(explosion, transform.position,
             transform.rotation), 10);
         Destroy(other.gameObject);
-        Time.timeScale = .125F;
-        Invoke("Reset", .5F);
+        Time.timeScale = 0.125F;
+        Invoke("Reset", 0.5F);
     }
 
     private void Reset() {
@@ -78,7 +78,7 @@ public class CobraInterceptor : MonoBehaviour {
     }
 
     private void UpdateVelocity() {
-        const float Lower = .25F, Upper = .5F, Delta = .0009765625F;
+        const float Lower = 0.25F, Upper = 0.5F, Delta = 9.765625E-4F;
         if (Input.GetKey(KeyCode.KeypadPlus))
             velocity += Delta;
         if (Input.GetKey(KeyCode.KeypadMinus))
@@ -117,8 +117,7 @@ public class CobraInterceptor : MonoBehaviour {
     private void UpdateLevelAndScore() {
         if (score >= 5000 && scene.Level < 2) {
             scene.Level = 2;
-        }
-        else if (score >= 2000 && scene.Level < 1) {
+        } else if (score >= 2000 && scene.Level < 1) {
             scene.Level = 1;
         }
 
